@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="weibo.sdk.android.sso.3.0.1-leancloud.weibo.sdk.android.sso.3.0.1-leancloud">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/weibo.sdk.android.sso.3.0.1-leancloud/weibo.sdk.android.sso.3.0.1-leancloud.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

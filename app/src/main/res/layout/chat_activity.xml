@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#262626">
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#262626"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back5"
+            android:paddingLeft="5dp"
+            />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="李义涛"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/bt_back"
+            android:layout_marginLeft="15dp"/>
+        <ImageButton
+            android:id="@+id/ib_person"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="#262626"
+            android:src="@drawable/person4"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#fff">
+
+        <ImageView
+            android:id="@+id/iv_speaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/speaker"
+            android:scaleX="0.9"
+            android:scaleY="0.9"/>
+
+        <LinearLayout
+            android:id="@+id/rl_bottom2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.23" >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_input_text"
+                android:paddingRight="25dp"
+                android:paddingLeft="5dp"
+                app:met_primaryColor="#16BB07"
+                 />
+            <ImageView
+                android:id="@+id/iv_smile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/smile"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                />
+
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_send"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#16BB07"
+            android:text="发送"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/lv_msg"
+        android:layout_below="@id/rl_top"
+        android:layout_above="@id/ll_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:stackFromBottom="false"
+        android:scrollbarStyle="outsideOverlay"
+        android:cacheColorHint="#0000"
+        android:background="#F2F2F2"/>
+
+</RelativeLayout>

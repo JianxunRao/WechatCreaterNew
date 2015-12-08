@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="avoscloud-push-v3.12.avoscloud-push-v3.12">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/avoscloud-push-v3.12/avoscloud-push-v3.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
