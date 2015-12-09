@@ -3,10 +3,14 @@ package com.trojx.wechatcreater.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +48,10 @@ public class SettingActivity extends AppCompatActivity {
         et_receiver_name= (EditText) findViewById(R.id.et_receiverr_name);
         bt_set_sender= (Button) findViewById(R.id.bt_set_sender);
         bt_set_receiver= (Button) findViewById(R.id.bt_set_receiver);
+        getDefaultLogo();
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar=getActionBar();
+
 
     }
     public void setSender(View v){
@@ -75,6 +83,8 @@ public class SettingActivity extends AppCompatActivity {
         }else {
 
             Intent intent=new Intent(this,ChatActivity.class);
+            intent.putExtra("sendername",et_sender_name.getText().toString());
+            intent.putExtra("receivername",et_receiver_name.getText().toString());
             startActivity(intent);
         }
     }
@@ -118,8 +128,39 @@ public class SettingActivity extends AppCompatActivity {
             }
         }
     }
+    private  void getDefaultLogo(){
+        try{
+            File file1=new File("sdcard/bitmapThumbReceiverSmall.png");
+            if(file1.exists()){
+                Bitmap bitmap= BitmapFactory.decodeFile("sdcard/bitmapThumbReceiverSmall.png");
+                civ_receiver.setImageBitmap(bitmap);
+            }
+            File file2=new File("sdcard/bitmapThumbSenderSmall.png");
+            if(file2.exists()){
+                Bitmap bitmap= BitmapFactory.decodeFile("sdcard/bitmapThumbSenderSmall.png");
+                civ_sender.setImageBitmap(bitmap);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.main_action_bar_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.it_redo){
+            //Toast.makeText(this,"被点击",Toast.LENGTH_SHORT).show();
+            et_sender_name.setText("");
+            et_receiver_name.setText("");
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
 }

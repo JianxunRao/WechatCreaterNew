@@ -45,28 +45,26 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             });
             builder.show();
-        }
-         final String account=et_account.getText().toString();
-        String password=et_password.getText().toString();
-        AVUser user=new AVUser();
-        user.setUsername(account);
-        user.setPassword(password);
-        user.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(AVException e) {
-                if(e==null){
-                    Intent intent=new Intent();
-                    intent.putExtra("account",account);
-                    setResult(RESULT_OK, intent);
-                    Toast.makeText(RegisterActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
-                    finish();
-                }else{
-                    Toast.makeText(RegisterActivity.this,"注册失败，请检查网络设置！",Toast.LENGTH_SHORT).show();
+        }else {
+            final String account=et_account.getText().toString();
+            String password=et_password.getText().toString();
+            AVUser user=new AVUser();
+            user.setUsername(account);
+            user.setPassword(password);
+            user.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(AVException e) {
+                    if(e==null){
+                        Intent intent=new Intent();
+                        intent.putExtra("account",account);
+                        setResult(RESULT_OK, intent);
+                        Toast.makeText(RegisterActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        Toast.makeText(RegisterActivity.this,"注册失败，请检查网络设置！",Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
-
-
-
+            });
+        }
     }
 }

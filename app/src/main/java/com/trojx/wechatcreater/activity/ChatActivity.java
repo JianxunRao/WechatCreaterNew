@@ -1,6 +1,13 @@
 package com.trojx.wechatcreater.activity;
 
 import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trojx.wechatcreater.R;
+import com.trojx.wechatcreater.Util.ScreenShot;
 import com.trojx.wechatcreater.adapter.MsgAdapter;
 import com.trojx.wechatcreater.domain.Msg;
 
@@ -31,6 +39,9 @@ public class ChatActivity extends AppCompatActivity {
     private List<Msg> msgList=new ArrayList<Msg>();
     private MsgAdapter adapter;
     private int status=Msg.TYPE_SEND;
+    private SensorManager sensorManager;
+    private String senderName;
+    private String receiverName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +56,12 @@ public class ChatActivity extends AppCompatActivity {
         etInputText = (EditText) findViewById(R.id.et_input_text);
         lvMsg = (ListView) findViewById(R.id.lv_msg);
         adapter = new MsgAdapter(ChatActivity.this, R.layout.msg_item, msgList);
+        Toast.makeText(this,"摇一摇手机截取屏幕~",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"点击右上角转换身份~",Toast.LENGTH_LONG).show();
+        Intent intent=getIntent();
+         senderName=intent.getStringExtra("sendername");
+         receiverName=intent.getStringExtra("receivername");
+        tvName.setText(senderName);
         lvMsg.setAdapter(adapter);
         btSend.setOnClickListener(new View.OnClickListener() {
 
@@ -66,7 +83,7 @@ public class ChatActivity extends AppCompatActivity {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
-                        if ((d.getTime() - lastDate.getTime()) > 900000) {
+                        if ((d.getTime() - lastDate.getTime()) > 120000) {
                             showDate = true;
                         } else {
                             showDate = false;
@@ -103,11 +120,45 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         });
+        sensorManager=(SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        Sensor sensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(listener,sensor,SensorManager.SENSOR_DELAY_NORMAL);
     }
+
     private void initMsgs(){
-        SimpleDateFormat sdf=new SimpleDateFormat("MM/dd/yy hh:mm:ss");
+        SimpleDateFormat sdf=new SimpleDateFormat("MM/dd/yy HH:mm:ss");
         String date=sdf.format(new Date());
         Msg msg1=new Msg(date, "现在开始自由编辑对话吧~", Msg.TYPE_RECEIVED,true);
-        msgList.add(msg1);
+        //msgList.add(msg1);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(sensorManager!=null){
+            sensorManager.unregisterListener(listener);
+        }
+    }
+    private SensorEventListener listener=new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            float xValue=Math.abs(event.values[0]);
+            float yValue=Math.abs(event.values[1]);
+            float zValue=Math.abs(event.values[2]);
+            if (xValue>22||yValue>22|zValue>22){
+//                ScreenShot.
+                Bitmap bitmap= ScreenShot.takeScreenShot(ChatActivity.this);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMddHHmm");
+                Date date=new Date();
+                String dateString=simpleDateFormat.format(date);
+                String filePath="sdcard/"+senderName+"与"+receiverName+"的对话"+dateString+".png";
+                ScreenShot.savePic(bitmap,filePath);
+                Toast.makeText(ChatActivity.this,"已保存到"+filePath,Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
 }

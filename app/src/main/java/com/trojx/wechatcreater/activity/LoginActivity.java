@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.trojx.wechatcreater.R;
@@ -25,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        AVOSCloud.initialize(this, "qGeVG0HXPT5e7HchnMsKdFte-gzGzoHsz", "dX0qIpEpN3x82G5T4TJMkven");
         AVUser currentUser=AVUser.getCurrentUser();
         et_account= (EditText) findViewById(R.id.et_account);
         et_password= (EditText) findViewById(R.id.et_password);
@@ -47,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (avUser != null) {
                         Intent intent = new Intent(LoginActivity.this, SettingActivity.class);
                         startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "登录失败，请检查网络设置！", Toast.LENGTH_SHORT).show();
                         et_password.setText("");

@@ -15,10 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:inputType="textPassword"
+        android:hint="输入密码"
         app:met_baseColor="#1E88E5"
         app:met_floatingLabel="highlight"
-        app:met_floatingLabelText="再次输入密码："
-        app:met_iconLeft="@drawable/enhanced_24dp"
+        app:met_floatingLabelText="输入密码："
+        app:met_iconLeft="@drawable/lock_48dp"
         />
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_rg_account"
@@ -27,12 +28,19 @@
         android:layout_above="@id/et_rg_pass"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:hint="创建账号"
         app:met_baseColor="#1E88E5"
         app:met_floatingLabel="highlight"
         app:met_floatingLabelText="输入账号："
         app:met_clearButton="true"
-        app:met_iconLeft="@drawable/account_24dp"
+        app:met_iconLeft="@drawable/account_48dp"
         />
+    <com.loopj.android.image.SmartImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/et_rg_account"
+        android:src="@drawable/logo_name"/>
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_rg_pass_comfirm"
         android:layout_width="250dp"
@@ -41,10 +49,11 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:inputType="textPassword"
+        android:hint="确认密码"
         app:met_baseColor="#1E88E5"
         app:met_floatingLabel="highlight"
-        app:met_floatingLabelText="输入密码："
-        app:met_iconLeft="@drawable/enhanced_24dp"
+        app:met_floatingLabelText="再次输入密码："
+        app:met_iconLeft="@drawable/lock_48dp"
         />
     <Button
         android:layout_width="match_parent"

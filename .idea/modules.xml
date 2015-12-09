@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/circleimageview/circleimageview.iml" filepath="$PROJECT_DIR$/circleimageview/circleimageview.iml" />
       <module fileurl="file://$PROJECT_DIR$/fastjson/fastjson.iml" filepath="$PROJECT_DIR$/fastjson/fastjson.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpmime-4.2.4/httpmime-4.2.4.iml" filepath="$PROJECT_DIR$/httpmime-4.2.4/httpmime-4.2.4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttp-2.5.0/okhttp-2.5.0.iml" filepath="$PROJECT_DIR$/okhttp-2.5.0/okhttp-2.5.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/okio-1.6.0/okio-1.6.0.iml" filepath="$PROJECT_DIR$/okio-1.6.0/okio-1.6.0.iml" />

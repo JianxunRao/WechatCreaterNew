@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">WechatCreater</string>
+    <string name="app_name">微信对话生成器</string>
     <string name="title_activity_chat">ChatActivity</string>
-    <string name="title_activity_setting">设置</string>
+    <string name="title_activity_setting">初始设置</string>
 
     <!-- Strings related to Settings -->
 
