@@ -18,6 +18,8 @@
         app:met_clearButton="true"
         app:met_baseColor="#1E88E5"
         app:met_iconLeft="@drawable/account_48dp"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="账号"
         android:hint="在此输入账号"
         app:met_minCharacters="6"
         />
@@ -31,6 +33,8 @@
         app:met_baseColor="#1E88E5"
         app:met_iconLeft="@drawable/lock_48dp"
         android:inputType="textPassword"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="密码"
         android:hint="在此输入密码"
         app:met_minCharacters="6"
          />
