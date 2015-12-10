@@ -2,6 +2,7 @@ package com.trojx.wechatcreater.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hardware.Sensor;
@@ -9,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +44,7 @@ public class ChatActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private String senderName;
     private String receiverName;
+    private boolean screenShotSaved=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +157,7 @@ public class ChatActivity extends AppCompatActivity {
                 String filePath="sdcard/"+senderName+"与"+receiverName+"的对话"+dateString+".png";
                 ScreenShot.savePic(bitmap,filePath);
                 Toast.makeText(ChatActivity.this,"已保存到"+filePath,Toast.LENGTH_LONG).show();
+                screenShotSaved=true;
             }
         }
 
@@ -161,4 +165,55 @@ public class ChatActivity extends AppCompatActivity {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
     };
+
+    @Override
+    public void onBackPressed() {
+
+        if(!screenShotSaved){
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);//直接new、get不了，用AlertDialog自带的Builder类来创建对话框
+//            builder.setIcon(android.R.drawable.ic_menu_agenda);
+            builder.setTitle("注意");
+            builder.setMessage("确定退出吗？\r\n摇一摇手机保存截图先~");
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // finish();
+                    ChatActivity.super.onBackPressed();
+                }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //
+                }
+            });
+            builder.show();
+        }else {
+            super.onBackPressed();
+        }
+    }
+    public void back(View v){
+        if(!screenShotSaved){
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);//直接new、get不了，用AlertDialog自带的Builder类来创建对话框
+//            builder.setIcon(android.R.drawable.ic_menu_agenda);
+            builder.setTitle("注意");
+            builder.setMessage("确定退出吗？\r\n摇一摇手机保存截图先~");
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // finish();
+                    finish();
+                }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //
+                }
+            });
+            builder.show();
+        }else {
+            finish();
+        }
+    }
 }

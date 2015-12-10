@@ -95,8 +95,8 @@
     <orderEntry type="module" module-name="qq.sdk.1.6.1" exported="" />
     <orderEntry type="module" module-name="avoscloud-push-v3.12" exported="" />
     <orderEntry type="module" module-name="Java-WebSocket-1.3.1-leancloud" exported="" />
-    <orderEntry type="module" module-name="httpmime-4.2.4" exported="" />
     <orderEntry type="module" module-name="weibo.sdk.android.sso.3.0.1-leancloud" exported="" />
+    <orderEntry type="module" module-name="httpmime-4.2.4" exported="" />
     <orderEntry type="module" module-name="fastjson" exported="" />
     <orderEntry type="module" module-name="avoscloud-sdk-v3.12" exported="" />
     <orderEntry type="module" module-name="okhttp-2.5.0" exported="" />
